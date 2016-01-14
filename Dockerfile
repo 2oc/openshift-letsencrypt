@@ -18,8 +18,11 @@ RUN cd /root/ && git clone https://github.com/lukas2511/letsencrypt.sh.git
 
 ADD ssl /tmp/ssl
 
-RUN chmod -R a+rw /tmp/ssl/*
+RUN chmod -R a+rwt /tmp/ssl/*
 RUN chmod a+rwxt /tmp/ssl
+
+RUN chmod a+rwxt /var/www/html
+RUN chmod -R a+rwxt /var/www/html/*
 
 USER 997
 EXPOSE 8080
