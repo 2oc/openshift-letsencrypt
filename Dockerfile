@@ -23,9 +23,6 @@ RUN chmod a+rwxt /tmp/ssl
 RUN chmod a+rwxt /var/www
 RUN chmod -R a+rwxt /var/www/*
 
-RUN ln -s /dev/tty /tmp/access.log
-RUN ln -s /dev/tty /tmp/error.log
-
 USER 997
 EXPOSE 8080
 CMD ["/usr/sbin/nginx", "-c", "/nginx.conf", "-g", "daemon off;"]
