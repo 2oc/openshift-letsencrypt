@@ -14,7 +14,7 @@ ADD nginx.conf /
 
 RUN chmod ugo+r /nginx.conf
 
-RUN cd /root/ && git clone https://github.com/letsencrypt/letsencrypt && ./letsencrypt-auto
+RUN cd /root/ && git clone https://github.com/letsencrypt/letsencrypt && cd letsencrypt && ./letsencrypt-auto
 
 USER 997
 EXPOSE 8080
