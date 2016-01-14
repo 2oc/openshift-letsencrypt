@@ -6,7 +6,7 @@ RUN yum -y install epel-release && yum -y install nginx git openssl curl && yum 
 RUN mkdir -p /var/www
 
 # web content
-ADD html /var/www
+ADD html /var/www/html
 
 RUN chmod -R ugo+r /var/www
 
