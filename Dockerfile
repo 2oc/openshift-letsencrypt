@@ -6,9 +6,7 @@ RUN yum -y install epel-release && yum -y install nginx git openssl curl && yum 
 RUN mkdir -p /var/www
 
 # web content
-ADD html /var/www/html
-
-RUN chmod -R ugo+r /var/www
+ADD html /var/www
 
 ADD nginx.conf /
 
@@ -21,8 +19,8 @@ ADD ssl /tmp/ssl
 RUN chmod -R a+rwt /tmp/ssl/*
 RUN chmod a+rwxt /tmp/ssl
 
-RUN chmod a+rwxt /var/www/html
-RUN chmod -R a+rwxt /var/www/html/*
+RUN chmod a+rwxt /var/www
+RUN chmod -R a+rwxt /var/www/*
 
 USER 997
 EXPOSE 8080
