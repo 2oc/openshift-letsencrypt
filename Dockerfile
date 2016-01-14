@@ -16,9 +16,7 @@ RUN chmod ugo+r /nginx.conf
 
 RUN cd /root/ && git clone https://github.com/lukas2511/letsencrypt.sh.git
 
-RUN mkdir -p /tmp/ssl
-ADD config.sh /tmp/ssl
-ADD domains.txt /tmp/ssl
+ADD ssl /tmp/ssl
 
 RUN chmod -R a+rw /tmp/ssl/*
 RUN chmod a+rwxt /tmp/ssl
