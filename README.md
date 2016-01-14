@@ -10,44 +10,20 @@ create a new project
 
 ```sh
 oc new-project openshift-letsencrypt \
-    --description="Website - static nginx" \
-    --display-name="Website static"
-```
-
-#### github private deploy key
-
-create an ssh deploy key without passphrase
-```sh
-ssh-keygen -f ~/.ssh/openshift-letsencrypt
-```
-
-```sh
-oc secrets new-sshauth openshift-letsencrypt --ssh-privatekey=/home/joeri/.ssh/openshift-letsencrypt
-oc secrets add serviceaccount/builder secrets/openshift-letsencrypt
-```
-
-Clone the repository
-```sh
-git clone git@github.com:ure/openshift-letsencrypt.git
-cd openshift-letsencrypt
+    --description="Letsencrypt - via nginx" \
+    --display-name="Letsencrypt static"
 ```
 
 Create the BuildConfig
 
 ```sh
-./genwebhooksecret.sh
 oc create -f BuildConfig.yaml
 ```
-Add your key to the deploy keys of you repository on GitHub
+
+Deploy from public git repository
 
 ```sh
-cat ~/.ssh/openshift-letsencrypt.pub
-```
-
-Deploy from private git repository
-
-```sh
-oc new-app .
+oc new-app https://github.com/ure/openshift-letsencrypt.git
 ```
 
 #### route.yml
