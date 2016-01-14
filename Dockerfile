@@ -16,6 +16,13 @@ RUN chmod ugo+r /nginx.conf
 
 RUN cd /root/ && git clone https://github.com/lukas2511/letsencrypt.sh.git
 
+RUN mkdir -p /tmp/ssl
+ADD config.sh /tmp/ssl
+ADD domains.txt /tmp/ssl
+
+RUN chmod -R a+rw /tmp/ssl/*
+RUN chmod a+rwxt /tmp/ssl
+
 USER 997
 EXPOSE 8080
 CMD ["/usr/sbin/nginx", "-c", "/nginx.conf", "-g", "daemon off;"]
