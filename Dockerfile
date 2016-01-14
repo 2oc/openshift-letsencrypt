@@ -1,7 +1,7 @@
 FROM centos:7
 MAINTAINER Joeri van Dooren
 
-RUN yum -y install epel-release && yum -y install nginx gcc git libffi-devel python-devel openssl-devel && yum clean all -y
+RUN yum -y install epel-release && yum -y install nginx git openssl curl && yum clean all -y
 
 RUN mkdir -p /var/www
 
@@ -14,7 +14,7 @@ ADD nginx.conf /
 
 RUN chmod ugo+r /nginx.conf
 
-RUN cd /root/ && git clone https://github.com/letsencrypt/letsencrypt && cd letsencrypt && ./letsencrypt-auto plugins
+RUN cd /root/ && git clone https://github.com/lukas2511/letsencrypt.sh.git
 
 USER 997
 EXPOSE 8080
