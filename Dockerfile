@@ -1,7 +1,7 @@
 FROM centos:7
 MAINTAINER Joeri van Dooren
 
-RUN yum -y install epel-release && yum -y install nginx gcc libffi-devel python-devel openssl-devel && yum clean all -y
+RUN yum -y install epel-release && yum -y install nginx gcc git libffi-devel python-devel openssl-devel && yum clean all -y
 
 RUN mkdir -p /var/www
 
