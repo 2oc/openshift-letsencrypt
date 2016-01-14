@@ -1,7 +1,7 @@
 FROM centos:7
 MAINTAINER Joeri van Dooren
 
-RUN yum -y install epel-release && yum -y install nginx git openssl curl supervisor cronie && yum clean all -y
+RUN yum -y install epel-release && yum -y install nginx git openssl openssl-devel curl supervisor cronie && yum clean all -y
 
 RUN mkdir -p /var/www
 RUN mkdir -p /var/www/letsencrypt
