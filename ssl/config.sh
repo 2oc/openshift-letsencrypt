@@ -26,7 +26,7 @@ BASEDIR=/tmp/ssl/
 
 # Output directory for challenge-tokens to be served by webserver or deployed in HOOK (default: $BASEDIR/.acme-challenges)
 #WELLKNOWN="${BASEDIR}/.acme-challenges"
-WELLKNOWN="/var/www/html"
+WELLKNOWN="/var/www/letsencrypt"
 
 # Location of private account key (default: $BASEDIR/private_key.pem)
 PRIVATE_KEY="${BASEDIR}/private_key.pem"

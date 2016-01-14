@@ -4,6 +4,7 @@ MAINTAINER Joeri van Dooren
 RUN yum -y install epel-release && yum -y install nginx git openssl curl && yum clean all -y
 
 RUN mkdir -p /var/www
+RUN mkdir -p /var/www/letsencrypt
 
 # web content
 ADD html /var/www
