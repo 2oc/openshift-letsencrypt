@@ -7,20 +7,20 @@ items:
       openshift.io/generated-by: OpenShiftNewApp
     creationTimestamp: null
     labels:
-      app: openshift-static-web
-    name: openshift-static-web
+      app: openshift-letsencrypt
+    name: openshift-letsencrypt
   spec:
     output:
       to:
         kind: ImageStreamTag
-        name: openshift-static-web:latest
+        name: openshift-letsencrypt:latest
     resources: {}
     source:
       git:
         ref: master
-        uri: git@github.com:ure/openshift-static-web.git
+        uri: git@github.com:ure/openshift-letsencrypt.git
       sourceSecret:
-        name: openshift-static-web
+        name: openshift-letsencrypt
       type: Git
     strategy:
       dockerStrategy:

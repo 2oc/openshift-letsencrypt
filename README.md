@@ -1,4 +1,4 @@
-# openshift-static-web
+# openshift-letsencrypt
 
 Template for running a nginx container for a static website.
 
@@ -9,7 +9,7 @@ You need oc (openshift cli tool) localy installed:
 create a new project
 
 ```sh
-oc new-project openshift-static-web \
+oc new-project openshift-letsencrypt \
     --description="Website - static nginx" \
     --display-name="Website static"
 ```
@@ -18,18 +18,18 @@ oc new-project openshift-static-web \
 
 create an ssh deploy key without passphrase
 ```sh
-ssh-keygen -f ~/.ssh/openshift-static-web
+ssh-keygen -f ~/.ssh/openshift-letsencrypt
 ```
 
 ```sh
-oc secrets new-sshauth openshift-static-web --ssh-privatekey=/home/joeri/.ssh/openshift-static-web
-oc secrets add serviceaccount/builder secrets/openshift-static-web
+oc secrets new-sshauth openshift-letsencrypt --ssh-privatekey=/home/joeri/.ssh/openshift-letsencrypt
+oc secrets add serviceaccount/builder secrets/openshift-letsencrypt
 ```
 
 Clone the repository
 ```sh
-git clone git@github.com:ure/openshift-static-web.git
-cd openshift-static-web
+git clone git@github.com:ure/openshift-letsencrypt.git
+cd openshift-letsencrypt
 ```
 
 Create the BuildConfig
@@ -41,7 +41,7 @@ oc create -f BuildConfig.yaml
 Add your key to the deploy keys of you repository on GitHub
 
 ```sh
-cat ~/.ssh/openshift-static-web.pub
+cat ~/.ssh/openshift-letsencrypt.pub
 ```
 
 Deploy from private git repository
