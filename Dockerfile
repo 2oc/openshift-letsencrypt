@@ -20,6 +20,10 @@ ADD ssl /tmp/ssl
 RUN chmod -R a+rwt /tmp/ssl/*
 RUN chmod a+rwxt /tmp/ssl
 
+RUN mkdir /tmp/log/ && rm -fr /var/log/nginx/* && ln -s /tmp/log/access.log /var/log/nginx/access.log && ln -s /tmp/log/error.log /var/log/nginx/error.log
+
+RUN chmod -R a+rxwt /tmp/log /var/log
+
 RUN chmod a+rwxt /var/www
 RUN chmod -R a+rwxt /var/www/*
 
