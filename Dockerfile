@@ -31,8 +31,8 @@ ADD ./supervisord.conf /tmp/supervisord.conf
 
 USER 997
 EXPOSE 8080
-CMD ["/usr/bin/supervisord", "-n", "-c", "/tmp/supervisord.conf"]
-#CMD ["/usr/sbin/nginx", "-c", "/nginx.conf", "-g", "daemon off;"]
+#CMD ["/usr/bin/supervisord", "-n", "-c", "/tmp/supervisord.conf"]
+CMD ["/usr/sbin/nginx", "-c", "/nginx.conf", "-g", "daemon off;"]
 
 # Set labels used in OpenShift to describe the builder images
 LABEL io.k8s.description="Platform for serving static HTML files" \
