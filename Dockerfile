@@ -1,7 +1,7 @@
 FROM centos:7
 MAINTAINER Joeri van Dooren
 
-RUN yum -y install epel-release && yum -y install nginx git openssl curl && yum clean all -y
+RUN yum -y install epel-release && yum -y install nginx git openssl curl supervisor cronie && yum clean all -y
 
 RUN mkdir -p /var/www
 RUN mkdir -p /var/www/letsencrypt
@@ -26,6 +26,8 @@ RUN chmod -R a+rxwt /tmp/log /var/log
 
 RUN chmod a+rwxt /var/www
 RUN chmod -R a+rwxt /var/www/*
+
+ADD ./supervisord.conf /tmp/supervisord.conf
 
 USER 997
 EXPOSE 8080
