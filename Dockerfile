@@ -22,8 +22,6 @@ RUN chmod a+rwxt /tmp/ssl
 
 RUN rm -fr /var/log/nginx/* && ln -s /tmp/access.log /var/log/nginx/access.log && ln -s /tmp/error.log /var/log/nginx/error.log
 
-RUN chmod -R a+rxwt /tmp/log /var/log
-
 RUN chmod a+rwxt /var/www
 RUN chmod -R a+rwxt /var/www/*
 
