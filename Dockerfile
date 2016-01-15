@@ -27,18 +27,20 @@ RUN chmod -R a+rxwt /tmp/log /var/log
 RUN chmod a+rwxt /var/www
 RUN chmod -R a+rwxt /var/www/*
 
+RUN mknod /tmp/console c 5 1
+RUN chmod a+rw /tmp/console
+
 ADD ./supervisord.conf /tmp/supervisord.conf
 
 USER 997
 EXPOSE 8080
 CMD ["/usr/bin/supervisord", "-n", "-c", "/tmp/supervisord.conf"]
-#CMD ["/usr/sbin/nginx", "-c", "/nginx.conf", "-g", "daemon off;"]
 
 # Set labels used in OpenShift to describe the builder images
-LABEL io.k8s.description="Platform for serving static HTML files" \
-      io.k8s.display-name="nginx centos7 epel" \
+LABEL io.k8s.description="Platform for automating ssl certs" \
+      io.k8s.display-name="letsencrypt centos7 epel" \
       io.openshift.expose-services="8080:http" \
-      io.openshift.tags="builder,html,nginx" \
+      io.openshift.tags="lestencrypt" \
       io.openshift.min-memory="1Gi" \
       io.openshift.min-cpu="1" \
       io.openshift.non-scalable="false"
