@@ -10,7 +10,7 @@ create a new project
 
 ```sh
 oc new-project openshift-letsencrypt \
-    --description="Letsencrypt - nginx" \
+    --description="Letsencrypt - automatic ssl certificate creation" \
     --display-name="Letsencrypt"
 ```
 
