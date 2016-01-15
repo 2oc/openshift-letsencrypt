@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: openshift-data
+  name: letsencrypt-data
 spec:
   accessModes:
     - ReadWriteOnce

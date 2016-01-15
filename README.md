@@ -27,8 +27,9 @@ cd openshift-letsencrypt
 oc create -f BuildConfig.yaml
 oc create -f DeploymentConfig.yaml
 oc create -f GlusterFS-Cluster.yaml
-oc create -f PersistentVolumeClaim.yaml 
+oc create -f PersistentVolumeClaim.yaml
 oc new-app https://github.com/ure/openshift-letsencrypt.git
+oc start-build openshift-letsencrypt
 ```
 
 ####route.yml

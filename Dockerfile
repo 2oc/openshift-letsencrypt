@@ -17,8 +17,8 @@ RUN cd /root/ && git clone https://github.com/lukas2511/letsencrypt.sh.git
 
 ADD ssl /tmp/ssl
 
-RUN chmod -R a+rwt /tmp/ssl/*
-RUN chmod a+rwxt /tmp/ssl
+ADD run_letsencrypt.sh /
+RUN chmod a+rx /run_letsencrypt.sh
 
 RUN chmod a+rwxt /var/www
 RUN chmod -R a+rwxt /var/www/*
