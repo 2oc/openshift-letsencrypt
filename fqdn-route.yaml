@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Route
-metadata:
-  name: www
-spec:
-  host: letsencrypt.moreorless.be
-  to:
-    kind: Service
-    name: openshift-letsencrypt

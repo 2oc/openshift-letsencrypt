@@ -22,7 +22,7 @@ LICENSE="https://letsencrypt.org/documents/LE-SA-v1.0.1-July-27-2015.pdf"
 CHALLENGETYPE="http-01"
 
 # Base directory for account key, generated certificates and list of domains (default: $SCRIPTDIR -- uses config directory if undefined)
-BASEDIR=/tmp/ssl/
+BASEDIR=/var/ssl/
 
 # Output directory for challenge-tokens to be served by webserver or deployed in HOOK (default: $BASEDIR/.acme-challenges)
 #WELLKNOWN="${BASEDIR}/.acme-challenges"
