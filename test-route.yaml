@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: testencrypt
+spec:
+  host: testencrypt.moreorless.be
+  to:
+    kind: Service
+    name: openshift-letsencrypt

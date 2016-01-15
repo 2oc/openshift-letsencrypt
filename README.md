@@ -21,14 +21,17 @@ git clone git@github.com:ure/openshift-letsencrypt.git
 cd openshift-letsencrypt
 ```
 
-Create the BuildConfig
+####Create the app
 
 ```sh
 oc create -f BuildConfig.yaml
 oc create -f DeploymentConfig.yaml
+oc create -f GlusterFS-Cluster.yaml
+oc create -f PersistentVolumeClaim.yaml 
+oc new-app https://github.com/ure/openshift-letsencrypt.git
 ```
 
-#### route.yml
+####route.yml
 
 Routes to a static hostname
 
