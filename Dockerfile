@@ -25,6 +25,8 @@ RUN chmod -R a+rwxt /var/www/*
 
 ADD supervisord.conf /tmp/supervisord.conf
 
+VOLUME /var/ssl
+
 USER 997
 EXPOSE 8080
 CMD ["/usr/bin/supervisord", "-n", "-c", "/tmp/supervisord.conf"]

@@ -1,0 +1,79 @@
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: null
+  labels:
+    app: openshift-letsencrypt
+  name: openshift-letsencrypt
+spec:
+  replicas: 1
+  selector:
+    app: openshift-letsencrypt
+    deploymentconfig: openshift-letsencrypt
+  strategy:
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      annotations:
+        openshift.io/generated-by: OpenShiftNewApp
+      creationTimestamp: null
+      labels:
+        app: openshift-letsencrypt
+        deploymentconfig: openshift-letsencrypt
+    spec:
+      output:
+        to:
+          kind: ImageStreamTag
+          name: openshift-letsencrypt:latest
+      resources: {}
+      source:
+        git:
+          ref: master
+          uri: https://github.com/ure/openshift-letsencrypt.git
+        type: Git
+      strategy:
+        dockerStrategy:
+          from:
+            kind: ImageStreamTag
+            name: centos:7
+        type: Docker
+      containers:
+      - image: openshift-letsencrypt
+        imagePullPolicy: Always
+        name: openshift-letsencrypt
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        volumeMounts:
+        - mountPath: /var/ssl
+          name: letsencrypt-data
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: letsencrypt-data
+        persistentVolumeClaim:
+          claimName: letsencrypt-data
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - openshift-letsencrypt
+      from:
+        kind: ImageStreamTag
+        name: openshift-letsencrypt:latest
+    type: ImageChange
+status: {}
