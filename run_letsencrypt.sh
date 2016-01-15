@@ -7,8 +7,8 @@ fi
 
 cd /var/ssl
 /root/letsencrypt.sh/letsencrypt.sh -c
-rm certs.tgz; tar zcf certs.tgz certs
-if [ -f ccryptkey ]; then
+rm certs.tgz; rm certs.tgz.cpt; tar zcf certs.tgz certs
+if [ -f /var/ssl/ccryptkey ]; then
   ccencrypt -K `cat ccryptkey` certs.tgz
 fi
 
