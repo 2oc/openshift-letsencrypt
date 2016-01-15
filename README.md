@@ -2,7 +2,7 @@
 
 Template for running a nginx container for a static website.
 
-### Installation
+###Installation
 
 You need oc (openshift cli tool) localy installed:
 
@@ -10,8 +10,8 @@ create a new project
 
 ```sh
 oc new-project openshift-letsencrypt \
-    --description="Letsencrypt - static nginx" \
-    --display-name="Letsencrypt static"
+    --description="Letsencrypt - nginx" \
+    --display-name="Letsencrypt"
 ```
 
 ####Clone the repository
@@ -32,10 +32,10 @@ oc new-app https://github.com/ure/openshift-letsencrypt.git
 oc start-build openshift-letsencrypt
 ```
 
-####route.yml
+####Add some external routes
 
-Routes to a static hostname
+Routes to a static hostname (edit !!)
 
 ```sh
-oc create -f route.yaml
+oc create -f Route.yaml
 ```
