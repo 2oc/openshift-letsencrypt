@@ -4,8 +4,7 @@ items:
   kind: BuildConfig
   metadata:
     annotations:
-      openshift.io/generated-by: OpenShiftNewApp
-    creationTimestamp: null
+      openshift.io/generated-by: uRe
     labels:
       app: openshift-letsencrypt
     name: openshift-letsencrypt
@@ -18,9 +17,7 @@ items:
     source:
       git:
         ref: master
-        uri: git@github.com:ure/openshift-letsencrypt.git
-      sourceSecret:
-        name: openshift-letsencrypt
+        uri: https://github.com/ure/openshift-letsencrypt.git
       type: Git
     strategy:
       dockerStrategy:
@@ -28,16 +25,6 @@ items:
           kind: ImageStreamTag
           name: centos:7
       type: Docker
-    triggers:
-    - github:
-        secret: GENWEBHOOKSECRET
-      type: GitHub
-    - generic:
-        secret: GENWEBHOOKSECRET
-      type: Generic
-    - type: ConfigChange
-    - imageChange: {}
-      type: ImageChange
   status:
     lastVersion: 0
 kind: List

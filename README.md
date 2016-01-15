@@ -25,6 +25,7 @@ Create the BuildConfig
 
 ```sh
 oc create -f BuildConfig.yaml
+oc create -f DeploymentConfig.yaml
 ```
 
 #### route.yml
