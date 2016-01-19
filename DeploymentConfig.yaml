@@ -3,7 +3,6 @@ kind: DeploymentConfig
 metadata:
   annotations:
     openshift.io/generated-by: OpenShiftNewApp
-  creationTimestamp: null
   labels:
     app: openshift-letsencrypt
   name: openshift-letsencrypt
@@ -15,17 +14,13 @@ spec:
   strategy:
     resources: {}
     rollingParams:
-      intervalSeconds: 1
       maxSurge: 25%
       maxUnavailable: 25%
-      timeoutSeconds: 600
-      updatePeriodSeconds: 1
     type: Rolling
   template:
     metadata:
       annotations:
         openshift.io/generated-by: OpenShiftNewApp
-      creationTimestamp: null
       labels:
         app: openshift-letsencrypt
         deploymentconfig: openshift-letsencrypt

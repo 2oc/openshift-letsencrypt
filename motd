@@ -1,0 +1,10 @@
+# (for remote fetching a passphrase is added in /var/ssl/ccryptkey)
+# Add new domains for certificate requests here:
+
+vi /var/ssl/domains.txt
+(one domain per line)
+
+/letsencrypt.sh
+(for the first with debugging on terminal)
+
+(future certificate updates will go automagicaly)
