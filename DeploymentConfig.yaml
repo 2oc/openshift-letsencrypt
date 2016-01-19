@@ -16,7 +16,7 @@ spec:
     rollingParams:
       maxSurge: 25%
       maxUnavailable: 25%
-    type: Rolling
+    type: Recreate
   template:
     metadata:
       annotations:
