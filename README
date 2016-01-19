@@ -1,0 +1,10 @@
+# mini howto
+
+vi /var/ssl/domains.txt
+(one entry per domain)
+
+run:
+/letsencrypt.sh for aquiring first certificate
+
+initial setup:
+for remote fetching from load balancers vi/var/ssl/ccryptkey

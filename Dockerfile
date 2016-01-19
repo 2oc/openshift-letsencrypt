@@ -20,11 +20,13 @@ ADD ssl /tmp/ssl
 ADD run_letsencrypt.sh /
 RUN chmod a+rx /run_letsencrypt.sh
 
+ADD README /
+RUN chmod a+r /README
+
+ADD GOTO_var_ssl /
+
 ADD letsencrypt.sh /
 RUN chmod a+rx /letsencrypt.sh
-
-ADD motd /etc/motd
-RUN chmod a+r /etc/motd
 
 RUN chmod a+rwxt /var/www
 RUN chmod -R a+rwxt /var/www/*
