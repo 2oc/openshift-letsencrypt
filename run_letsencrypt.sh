@@ -38,3 +38,6 @@ if [ ! -f /var/ssl/access.log ]; then
       kill -USR1 `cat /var/run/nginx.pid`
   fi
 fi
+
+# sleep 10 minutes
+sleep 10m
