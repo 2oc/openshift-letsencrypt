@@ -33,7 +33,7 @@ RUN chmod -R a+rwxt /var/www/*
 
 ADD supervisord.conf /tmp/supervisord.conf
 
-VOLUME /var/ssl
+WORKDIR /var/ssl
 
 USER 997
 EXPOSE 8080

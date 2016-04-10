@@ -20,10 +20,6 @@ items:
         uri: https://github.com/ure/openshift-letsencrypt.git
       type: Git
     strategy:
-      dockerStrategy:
-        from:
-          kind: ImageStreamTag
-          name: centos:7
       type: Docker
   status:
     lastVersion: 0
