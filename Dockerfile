@@ -1,35 +1,18 @@
 FROM centos:7
 MAINTAINER Joeri van Dooren
 
-RUN yum clean all -y && yum -y install epel-release && yum -y install nginx git openssl curl supervisor ccrypt && yum clean all -y
-
-RUN mkdir -p /var/www
-RUN mkdir -p /var/www/letsencrypt
+RUN yum clean all -y && yum -y install epel-release && yum -y install nginx git openssl curl supervisor ccrypt && yum clean all -y && mkdir -p /var/www && mkdir -p /var/www/letsencrypt
 
 # web content
 ADD html /var/www
-
 ADD nginx.conf /
-
-RUN chmod ugo+r /nginx.conf
-
-RUN cd /root/ && git clone https://github.com/lukas2511/letsencrypt.sh.git
-
 ADD ssl /tmp/ssl
-
 ADD run_letsencrypt.sh /
-RUN chmod a+rx /run_letsencrypt.sh
-
 ADD README /
-RUN chmod a+r /README
-
 ADD GOTO_var_ssl /
 
 ADD letsencrypt.sh /
-RUN chmod a+rx /letsencrypt.sh
-
-RUN chmod a+rwxt /var/www
-RUN chmod -R a+rwxt /var/www/*
+RUN cd /root/ && git clone https://github.com/lukas2511/letsencrypt.sh.git && chmod a+rx /letsencrypt.sh && chmod a+rwxt /var/www && chmod -R a+rwxt /var/www/* && chmod a+rwx /root/letsencrypt.sh && chmod a+rx /run_letsencrypt.sh && chmod ugo+r /nginx.conf
 
 ADD supervisord.conf /tmp/supervisord.conf
 
