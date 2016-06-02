@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # install letsencrypt if not in persistentvolume
-if [ ! -f /var/ssl/config.sh ]; then
+if [ ! -f /var/ssl/domains.txt ]; then
   cp -vfpr /tmp/ssl/* /var/ssl/
   cp /README /var/ssl
 fi
